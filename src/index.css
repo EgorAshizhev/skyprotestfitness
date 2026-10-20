@@ -1,0 +1,12 @@
+@import "tailwindcss";
+
+@theme {
+  --font-sans: "Roboto", system-ui, sans-serif;
+  --color-brand: #bcec30; /* салатовый из макета */
+  --color-accent: #2491d2; /* синий подчёркивания */
+}
+
+body {
+  background-color: #fafafa;
+  color: #000;
+}

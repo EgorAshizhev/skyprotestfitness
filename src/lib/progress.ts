@@ -16,7 +16,9 @@ export const workoutPercent = (exercises: Exercise[], progressData: number[]): n
 /** Процент по курсу: доля завершённых тренировок */
 export const coursePercent = (workoutsProgress: WorkoutProgress[]): number =>
   workoutsProgress.length
-    ? clamp((workoutsProgress.filter((w) => w.workoutCompleted).length / workoutsProgress.length) * 100)
+    ? clamp(
+        (workoutsProgress.filter((w) => w.workoutCompleted).length / workoutsProgress.length) * 100
+      )
     : 0;
 
 /** Подставляет новое значение в массив, остальное оставляет как было */
@@ -24,6 +26,15 @@ export const withExerciseProgress = (
   current: number[],
   exercisesCount: number,
   index: number,
-  value: number,
+  value: number
 ): number[] =>
   Array.from({ length: exercisesCount }, (_, i) => (i === index ? value : (current[i] ?? 0)));
+
+/** Процент по курсу от общего числа тренировок (в ответе progress могут быть только начатые) */
+export const courseCompletionPercent = (
+  totalWorkouts: number,
+  workoutsProgress: WorkoutProgress[]
+): number =>
+  totalWorkouts > 0
+    ? clamp((workoutsProgress.filter((w) => w.workoutCompleted).length / totalWorkouts) * 100)
+    : 0;

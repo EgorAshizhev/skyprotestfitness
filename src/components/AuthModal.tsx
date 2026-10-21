@@ -73,7 +73,7 @@ export default function AuthModal() {
         <button
           type="submit"
           disabled={pending}
-          className="mb-3 w-full rounded-full bg-lime-300 py-3 disabled:opacity-60"
+          className="btn-primary mb-3 w-full py-3 text-lg"
         >
           Войти
         </button>
@@ -81,7 +81,7 @@ export default function AuthModal() {
           type="button"
           disabled={pending}
           onClick={() => void submit('register')}
-          className="w-full rounded-full border border-black py-3 disabled:opacity-60"
+          className="btn-secondary w-full py-3 text-lg"
         >
           Зарегистрироваться
         </button>

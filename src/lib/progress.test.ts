@@ -1,5 +1,11 @@
 import { describe, expect, it } from '@jest/globals';
-import { coursePercent, exercisePercent, withExerciseProgress, workoutPercent } from './progress';
+import {
+  courseCompletionPercent,
+  coursePercent,
+  exercisePercent,
+  withExerciseProgress,
+  workoutPercent,
+} from './progress';
 
 describe('progress', () => {
   it('exercisePercent ограничен 100', () => {
@@ -24,5 +30,11 @@ describe('progress', () => {
   });
   it('withExerciseProgress сохраняет остальные значения', () => {
     expect(withExerciseProgress([1, 7, 0, 10], 4, 2, 5)).toEqual([1, 7, 5, 10]);
+  });
+  it('courseCompletionPercent считает от общего числа тренировок', () => {
+    const done = [{ workoutId: '1', workoutCompleted: true, progressData: [] }];
+    expect(courseCompletionPercent(5, done)).toBe(20);
+    expect(courseCompletionPercent(0, done)).toBe(0);
+    expect(courseCompletionPercent(1, done)).toBe(100);
   });
 });

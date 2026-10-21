@@ -10,3 +10,17 @@ body {
   background-color: #fafafa;
   color: #000;
 }
+
+/* Кнопки из макета: Regular / Hover / Active / Inactive */
+@layer components {
+  .btn-primary {
+    @apply rounded-full bg-brand text-black transition-colors;
+    @apply enabled:hover:bg-[#c6ff00] enabled:active:bg-black enabled:active:text-white;
+    @apply disabled:cursor-not-allowed disabled:bg-[#f7f7f7] disabled:text-[#999];
+  }
+  .btn-secondary {
+    @apply rounded-full border border-black bg-white text-black transition-colors;
+    @apply enabled:hover:bg-[#f7f7f7] enabled:active:bg-[#e9ecee];
+    @apply disabled:cursor-not-allowed disabled:border-[#999] disabled:text-[#999];
+  }
+}

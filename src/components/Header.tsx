@@ -24,7 +24,7 @@ export default function Header() {
         <button
           type="button"
           onClick={openAuthModal}
-          className="rounded-full bg-brand px-7 py-3 text-lg transition-opacity hover:opacity-80"
+          className="btn-primary px-7 py-3 text-lg"
         >
           Войти
         </button>

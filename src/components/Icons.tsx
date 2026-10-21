@@ -68,3 +68,18 @@ export const StarIcon = () => (
     <path d="M8 0c.4 3.9 2.1 6.4 8 8-5.9 1.6-7.6 4.1-8 8-.4-3.9-2.1-6.4-8-8 5.9-1.6 7.6-4.1 8-8Z" />
   </svg>
 );
+
+export const ProfileAvatarIcon = () => (
+  <svg viewBox="0 0 178 178" className="h-full w-full" aria-hidden="true">
+    <rect width="178" height="178" fill="#D9D9D9" />
+    <circle cx="89" cy="62" r="34" fill="#fff" />
+    <path d="M10 178c0-42 36-70 79-70s79 28 79 70H10Z" fill="#fff" />
+  </svg>
+);
+
+export const MinusCircleIcon = () => (
+  <svg width="24" height="24" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+    <circle cx="12" cy="12" r="11" fill="#fff" stroke="#000" strokeWidth="1.5" />
+    <path d="M7 12h10" stroke="#000" strokeWidth="1.8" strokeLinecap="round" />
+  </svg>
+);

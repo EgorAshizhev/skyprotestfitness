@@ -1,6 +1,7 @@
 import { Link } from 'react-router-dom';
 import { useAuth } from '../context/useAuth';
 import { LogoIcon } from './Icons';
+import UserMenu from './UserMenu';
 
 export default function Header() {
   const { user, openAuthModal } = useAuth();
@@ -18,9 +19,7 @@ export default function Header() {
       </Link>
 
       {user ? (
-        <Link to="/profile" className="text-lg">
-          {user?.email?.split('@')[0] || 'Пользователь'}
-        </Link>
+        <UserMenu />
       ) : (
         <button
           type="button"

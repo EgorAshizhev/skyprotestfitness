@@ -2,8 +2,14 @@
 
 export const LogoIcon = () => (
   <svg width="30" height="26" viewBox="0 0 30 26" fill="none" aria-hidden="true">
-    <path d="M0 2.2C0 .5 1.9-.5 3.3.4l12.4 8.3c1.2.8 1.2 2.6 0 3.4L3.3 20.4C1.9 21.3 0 20.3 0 18.6V2.2Z" fill="#00C1FF" />
-    <path d="M12 2.2c0-1.7 1.9-2.7 3.3-1.8l12.4 8.3c1.2.8 1.2 2.6 0 3.4l-12.4 8.3c-1.4.9-3.3-.1-3.3-1.8V2.2Z" fill="#BCEC30" />
+    <path
+      d="M0 2.2C0 .5 1.9-.5 3.3.4l12.4 8.3c1.2.8 1.2 2.6 0 3.4L3.3 20.4C1.9 21.3 0 20.3 0 18.6V2.2Z"
+      fill="#00C1FF"
+    />
+    <path
+      d="M12 2.2c0-1.7 1.9-2.7 3.3-1.8l12.4 8.3c1.2.8 1.2 2.6 0 3.4l-12.4 8.3c-1.4.9-3.3-.1-3.3-1.8V2.2Z"
+      fill="#BCEC30"
+    />
   </svg>
 );
 
@@ -24,5 +30,41 @@ export const LevelIcon = () => (
     <rect x="1" y="10" width="3.5" height="5" rx="1" />
     <rect x="6.25" y="6" width="3.5" height="9" rx="1" opacity=".45" />
     <rect x="11.5" y="1" width="3.5" height="14" rx="1" opacity=".45" />
+  </svg>
+);
+
+export const UserAvatarIcon = () => (
+  <svg width="40" height="40" viewBox="0 0 40 40" fill="none" aria-hidden="true">
+    <circle cx="20" cy="20" r="20" fill="#C4C4C4" />
+    <circle cx="20" cy="15" r="6" fill="#fff" />
+    <path
+      d="M7.5 33c1.6-6 6.6-9 12.5-9s10.9 3 12.5 9A19.9 19.9 0 0 1 20 40a19.9 19.9 0 0 1-12.5-7Z"
+      fill="#fff"
+    />
+  </svg>
+);
+
+export const ChevronDownIcon = ({ open = false }: { open?: boolean }) => (
+  <svg
+    width="12"
+    height="8"
+    viewBox="0 0 12 8"
+    fill="none"
+    aria-hidden="true"
+    className={`transition-transform ${open ? 'rotate-180' : ''}`}
+  >
+    <path
+      d="m1 1.5 5 5 5-5"
+      stroke="currentColor"
+      strokeWidth="1.6"
+      strokeLinecap="round"
+      strokeLinejoin="round"
+    />
+  </svg>
+);
+
+export const StarIcon = () => (
+  <svg width="16" height="16" viewBox="0 0 16 16" fill="currentColor" aria-hidden="true">
+    <path d="M8 0c.4 3.9 2.1 6.4 8 8-5.9 1.6-7.6 4.1-8 8-.4-3.9-2.1-6.4-8-8 5.9-1.6 7.6-4.1 8-8Z" />
   </svg>
 );

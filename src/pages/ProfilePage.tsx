@@ -1,10 +1,10 @@
 import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { ApiError } from '../api/client';
-import { getCourseWorkouts, removeCourse, resetCourseProgress } from '../api/courses';
-import { getCourseProgress } from '../api/workouts';
+import { removeCourse, resetCourseProgress } from '../api/courses';
 import { ProfileAvatarIcon } from '../components/Icons';
 import ProfileCourseCard from '../components/ProfileCourseCard';
+import SelectWorkoutModal from '../components/SelectWorkoutModal';
 import { useAuth } from '../context/useAuth';
 import { useMyCourses, type MyCourse } from '../hooks/useMyCourses';
 
@@ -14,6 +14,7 @@ export default function ProfilePage() {
   const { items, isLoading, error, refresh } = useMyCourses();
   const [busyId, setBusyId] = useState<string | null>(null);
   const [actionError, setActionError] = useState<string | null>(null);
+  const [selectCourseId, setSelectCourseId] = useState<string | null>(null);
 
   if (!user) return null; // ProtectedRoute не пустит сюда без входа
 
@@ -49,27 +50,16 @@ export default function ProfilePage() {
       'Не удалось удалить курс'
     );
 
-  // «Начать заново» сбрасывает прогресс; иначе идём к первой незавершённой тренировке
+  // «Начать заново» сначала сбрасывает прогресс, затем, как и остальные кнопки, открывает выбор тренировки
   const onStart = ({ course, percent }: MyCourse) =>
     run(
       course._id,
       async () => {
-        const restart = percent >= 100;
-        if (restart) await resetCourseProgress(course._id);
-
-        const workouts = await getCourseWorkouts(course._id);
-        if (workouts.length === 0) throw new ApiError('В курсе пока нет тренировок', 0);
-
-        let target = workouts[0];
-        if (!restart) {
-          const progress = await getCourseProgress(course._id).catch(() => null);
-          const done = new Set(
-            progress?.workoutsProgress.filter((w) => w.workoutCompleted).map((w) => w.workoutId)
-          );
-          target = workouts.find((w) => !done.has(w._id)) ?? workouts[0];
+        if (percent >= 100) {
+          await resetCourseProgress(course._id);
+          refresh();
         }
-        refresh();
-        navigate(`/workout/${course._id}/${target._id}`);
+        setSelectCourseId(course._id);
       },
       'Не удалось открыть тренировки'
     );
@@ -113,6 +103,9 @@ export default function ProfilePage() {
           />
         ))}
       </div>
+      {selectCourseId && (
+        <SelectWorkoutModal courseId={selectCourseId} onClose={() => setSelectCourseId(null)} />
+      )}
     </main>
   );
 }

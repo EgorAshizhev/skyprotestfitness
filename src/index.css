@@ -2,8 +2,8 @@
 
 @theme {
   --font-sans: "Roboto", system-ui, sans-serif;
-  --color-brand: #bcec30; /* салатовый из макета */
-  --color-accent: #2491d2; /* синий подчёркивания */
+  --color-brand: #bcec30;
+  --color-accent: #2491d2;
 }
 
 body {
@@ -11,7 +11,6 @@ body {
   color: #000;
 }
 
-/* Кнопки из макета: Regular / Hover / Active / Inactive */
 @layer components {
   .btn-primary {
     @apply rounded-full bg-brand text-black transition-colors;

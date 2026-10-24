@@ -83,3 +83,22 @@ export const MinusCircleIcon = () => (
     <path d="M7 12h10" stroke="#000" strokeWidth="1.8" strokeLinecap="round" />
   </svg>
 );
+
+export const CheckCircleIcon = ({ size = 24 }: { size?: number }) => (
+  <svg width={size} height={size} viewBox="0 0 24 24" fill="none" aria-hidden="true">
+    <circle cx="12" cy="12" r="12" fill="#BCEC30" />
+    <path
+      d="m7 12.5 3.2 3.2L17 8.9"
+      stroke="#fff"
+      strokeWidth="2.2"
+      strokeLinecap="round"
+      strokeLinejoin="round"
+    />
+  </svg>
+);
+
+export const EmptyCircleIcon = () => (
+  <svg width="20" height="20" viewBox="0 0 20 20" fill="none" aria-hidden="true">
+    <circle cx="10" cy="10" r="9" stroke="#000" strokeWidth="1.4" />
+  </svg>
+);

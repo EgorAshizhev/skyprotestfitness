@@ -20,7 +20,6 @@ interface Props {
   onClose: () => void;
 }
 
-/** «Выберите тренировку»: список уроков курса с отметками о прохождении. */
 export default function SelectWorkoutModal({ courseId, onClose }: Props) {
   const navigate = useNavigate();
   const [state, setState] = useState<State>({ loaded: false, workouts: [], done: [], error: null });
@@ -30,7 +29,6 @@ export default function SelectWorkoutModal({ courseId, onClose }: Props) {
     let cancelled = false;
     Promise.all([
       getCourseWorkouts(courseId),
-      // прогресс не критичен: без него просто не будет галочек
       getCourseProgress(courseId).catch(() => null),
     ])
       .then(([workouts, progress]) => {
@@ -51,7 +49,6 @@ export default function SelectWorkoutModal({ courseId, onClose }: Props) {
   }, [courseId]);
 
   const { loaded, workouts, done, error } = state;
-  // по умолчанию выбрана первая непройденная тренировка
   const defaultId = (workouts.find((w) => !done.includes(w._id)) ?? workouts[0])?._id ?? null;
   const currentId = selectedId ?? defaultId;
 

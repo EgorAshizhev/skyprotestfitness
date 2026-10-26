@@ -6,7 +6,6 @@ interface Props {
   className?: string;
 }
 
-/** Затемнение + белая карточка по центру. Закрывается по Escape и клику вне окна. */
 export default function Modal({ onClose, children, className = '' }: Props) {
   useEffect(() => {
     const onKey = (e: KeyboardEvent) => e.key === 'Escape' && onClose();

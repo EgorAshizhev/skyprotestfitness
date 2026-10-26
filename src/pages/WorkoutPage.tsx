@@ -17,7 +17,6 @@ export default function WorkoutPage() {
   );
   const [dialog, setDialog] = useState<Dialog>('none');
 
-  // «Ваш прогресс засчитан!» закрывается сама
   useEffect(() => {
     if (dialog !== 'accepted') return;
     const t = setTimeout(() => setDialog('none'), 1800);
@@ -39,7 +38,6 @@ export default function WorkoutPage() {
   const { exercises } = workout;
   const hasExercises = exercises.length > 0;
   const hasProgress = values.some((v) => v > 0);
-  // номер берём из названия («Урок 2», «2 день»), иначе по месту в курсе
   const index = (workoutNumber(workout.name) ?? course.workouts.indexOf(workout._id) + 1) - 1;
   const { title } = parseWorkoutName(workout.name);
 

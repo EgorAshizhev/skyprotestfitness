@@ -2,7 +2,6 @@ import { useEffect } from 'react';
 import { Navigate, Outlet } from 'react-router-dom';
 import { useAuth } from '../context/useAuth';
 
-/** Профиль и тренировки доступны только авторизованным. */
 export default function ProtectedRoute() {
   const { user, isLoading, openAuthModal } = useAuth();
 

@@ -3,14 +3,12 @@ import { Link, useNavigate } from 'react-router-dom';
 import { useAuth } from '../context/useAuth';
 import { ChevronDownIcon, UserAvatarIcon } from './Icons';
 
-/** Меню пользователя из макета: имя, email, «Мой профиль» и «Выйти». */
 export default function UserMenu() {
   const { user, logout } = useAuth();
   const navigate = useNavigate();
   const [open, setOpen] = useState(false);
   const ref = useRef<HTMLDivElement>(null);
 
-  // закрываем по клику вне меню и по Escape
   useEffect(() => {
     if (!open) return;
     const onClick = (e: MouseEvent) => {

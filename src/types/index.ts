@@ -28,7 +28,6 @@ export interface Course {
   directions: string[];
   fitting: string[];
   workouts: string[];
-  // приходят только в GET /courses/:id
   difficulty?: string;
   durationInDays?: number;
   dailyDurationInMinutes?: { from: number; to: number };

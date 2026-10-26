@@ -20,7 +20,6 @@ export default function AuthModal() {
 
     if (!email || !password) return setError('Заполните все поля');
     if (mode === 'register') {
-      // на входе пароль не проверяем: правила нужны только при регистрации
       const msg = validateEmail(email) ?? validatePassword(password);
       if (msg) return setError(msg);
     }

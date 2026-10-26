@@ -5,10 +5,10 @@ import { getWorkout, getWorkoutProgress, saveWorkoutProgress } from '../api/work
 import type { Course, Workout } from '../types';
 
 interface State {
-  key: string | null; // для какой тренировки получен результат
+  key: string | null;
   workout: Workout | null;
   course: Course | null;
-  values: number[]; // выполнено повторений по каждому упражнению
+  values: number[];
   completed: boolean;
   error: string | null;
 }
@@ -40,7 +40,6 @@ export function useWorkoutPage(courseId: string | undefined, workoutId: string |
     ])
       .then(([workout, course, progress]) => {
         if (cancelled) return;
-        // у ещё не начатой тренировки progressData в ответе нет
         const saved = progress.progressData ?? [];
         setState({
           key,
@@ -66,7 +65,6 @@ export function useWorkoutPage(courseId: string | undefined, workoutId: string |
     async (values: number[]) => {
       if (!courseId || !workoutId || !state.workout) return;
       await saveWorkoutProgress(courseId, workoutId, values);
-      // сервер сохраняет прогресс уже после ответа, поэтому не перезапрашиваем, а обновляем локально
       setState((s) => (s.workout ? { ...s, values, completed: isDone(s.workout, values) } : s));
     },
     [courseId, workoutId, state.workout]

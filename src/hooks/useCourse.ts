@@ -4,7 +4,7 @@ import { getCourse } from '../api/courses';
 import type { Course } from '../types';
 
 interface State {
-  id: string | null; // для какого курса получен результат
+  id: string | null;
   course: Course | null;
   error: string | null;
 }
@@ -33,7 +33,6 @@ export function useCourse(courseId: string | undefined) {
     };
   }, [courseId]);
 
-  // загрузка = результат ещё не пришёл для текущего courseId
   const isLoading = Boolean(courseId) && state.id !== courseId;
   return {
     course: isLoading ? null : state.course,

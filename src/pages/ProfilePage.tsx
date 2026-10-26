@@ -16,10 +16,9 @@ export default function ProfilePage() {
   const [actionError, setActionError] = useState<string | null>(null);
   const [selectCourseId, setSelectCourseId] = useState<string | null>(null);
 
-  if (!user) return null; // ProtectedRoute не пустит сюда без входа
+  if (!user) return null;
 
   const login = user.email.split('@')[0];
-  // в API нет имени пользователя: берём первое слово логина (sergey.petrov96 -> Sergey)
   const word = login.split(/[._\-\d]/)[0] || login;
   const name = word.charAt(0).toUpperCase() + word.slice(1);
 
@@ -50,7 +49,6 @@ export default function ProfilePage() {
       'Не удалось удалить курс'
     );
 
-  // «Начать заново» сначала сбрасывает прогресс, затем, как и остальные кнопки, открывает выбор тренировки
   const onStart = ({ course, percent }: MyCourse) =>
     run(
       course._id,

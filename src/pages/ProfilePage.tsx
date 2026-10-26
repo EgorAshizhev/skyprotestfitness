@@ -66,16 +66,20 @@ export default function ProfilePage() {
 
   return (
     <main className="pb-16">
-      <h1 className="mb-8 text-3xl font-medium md:text-4xl">Профиль</h1>
+      <h1 className="mb-6 text-3xl font-medium sm:mb-8 md:text-4xl">Профиль</h1>
 
       <section className="mb-12 flex flex-col gap-6 rounded-[30px] bg-white p-6 shadow-[0_4px_67px_-12px_rgba(0,0,0,0.13)] sm:flex-row sm:items-center md:mb-16 md:p-7">
         <div className="h-44.5 w-44.5 shrink-0 overflow-hidden rounded-3xl">
           <ProfileAvatarIcon />
         </div>
-        <div>
+        <div className="w-full sm:w-auto">
           <h2 className="mb-4 text-3xl font-medium">{name}</h2>
           <p className="mb-6">Логин: {login}</p>
-          <button type="button" onClick={onLogout} className="btn-secondary px-10 py-3 text-lg">
+          <button
+            type="button"
+            onClick={onLogout}
+            className="btn-secondary w-full px-10 py-3 text-lg sm:w-auto"
+          >
             Выйти
           </button>
         </div>

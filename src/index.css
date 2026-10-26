@@ -2,8 +2,8 @@
 
 @theme {
   --font-sans: "Roboto", system-ui, sans-serif;
-  --color-brand: #bcec30;
-  --color-accent: #2491d2;
+  --color-brand: #bcec30; /* салатовый из макета */
+  --color-accent: #2491d2; /* синий подчёркивания */
 }
 
 body {
@@ -11,6 +11,15 @@ body {
   color: #000;
 }
 
+/* Tailwind 4 по умолчанию оставляет у кнопок обычную стрелку: возвращаем «руку» */
+@layer base {
+  button:not(:disabled),
+  [role='button']:not([aria-disabled='true']) {
+    cursor: pointer;
+  }
+}
+
+/* Кнопки из макета: Regular / Hover / Active / Inactive */
 @layer components {
   .btn-primary {
     @apply rounded-full bg-brand text-black transition-colors;

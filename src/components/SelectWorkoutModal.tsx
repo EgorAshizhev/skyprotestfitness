@@ -59,7 +59,7 @@ export default function SelectWorkoutModal({ courseId, onClose }: Props) {
 
   return (
     <Modal onClose={onClose} className="max-w-95 p-6 sm:p-8">
-      <h2 className="mb-8 text-center text-3xl font-medium">Выберите тренировку</h2>
+      <h2 className="mb-6 text-3xl font-medium sm:mb-8 sm:text-center">Выберите тренировку</h2>
 
       {!loaded && <p className="mb-6 text-center">Загрузка…</p>}
       {error && <p className="mb-6 text-center text-red-500">{error}</p>}

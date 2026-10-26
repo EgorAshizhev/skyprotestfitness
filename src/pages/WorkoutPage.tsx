@@ -50,9 +50,9 @@ export default function WorkoutPage() {
 
   return (
     <main className="pb-16">
-      <h1 className="mb-6 text-4xl font-medium md:mb-8 md:text-5xl">{course.nameRU}</h1>
+      <h1 className="mb-4 text-3xl font-medium sm:text-4xl md:mb-8 md:text-5xl">{course.nameRU}</h1>
 
-      <div className="mb-8 aspect-video overflow-hidden rounded-[30px] bg-gray-200 md:mb-10">
+      <div className="mb-6 aspect-video overflow-hidden rounded-3xl bg-gray-200 md:mb-10 md:rounded-[30px]">
         <iframe
           src={toEmbedUrl(workout.video)}
           title={title}
@@ -62,7 +62,7 @@ export default function WorkoutPage() {
         />
       </div>
 
-      <section className="rounded-[30px] bg-white p-6 shadow-[0_4px_67px_-12px_rgba(0,0,0,0.13)] md:p-8">
+      <section className="rounded-3xl bg-white p-5 shadow-[0_4px_67px_-12px_rgba(0,0,0,0.13)] md:rounded-[30px] md:p-8">
         <h2 className="mb-5 text-2xl font-medium">
           {hasExercises ? 'Упражнения' : 'Тренировка'}
           {index >= 0 && ` тренировки ${index + 1}`}
@@ -103,7 +103,7 @@ export default function WorkoutPage() {
           <button
             type="button"
             onClick={() => (hasExercises ? setDialog('progress') : void onSave([]))}
-            className="btn-primary px-8 py-3 text-lg"
+            className="btn-primary w-full px-8 py-3 text-base sm:w-auto sm:text-lg"
           >
             {!hasExercises
               ? 'Отметить пройденной'

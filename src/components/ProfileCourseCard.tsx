@@ -41,14 +41,12 @@ export default function ProfileCourseCard({ item, busy, onRemove, onStart }: Pro
       <button
         type="button"
         disabled={busy}
+        title="Удалить курс"
         aria-label="Удалить курс"
         onClick={() => onRemove(course._id)}
-        className="group absolute right-5 top-5 disabled:opacity-60"
+        className="absolute right-5 top-5 rounded-full disabled:opacity-60"
       >
         <MinusCircleIcon />
-        <span className="pointer-events-none absolute left-full top-full ml-1 hidden whitespace-nowrap rounded border border-gray-400 bg-white px-1.5 py-0.5 text-[10px] leading-tight group-hover:block group-focus-visible:block">
-          Удалить курс
-        </span>
       </button>
 
       <div className="p-6 pt-5">
@@ -65,7 +63,7 @@ export default function ProfileCourseCard({ item, busy, onRemove, onStart }: Pro
           <Chip icon={<LevelIcon />}>{difficulty ?? 'Сложность'}</Chip>
         </div>
 
-        <p className="mb-2 text-lg">Прогресс {percent}%</p>
+        <p className="mb-2 text-base sm:text-lg">Прогресс {percent}%</p>
         <div
           role="progressbar"
           aria-valuenow={percent}

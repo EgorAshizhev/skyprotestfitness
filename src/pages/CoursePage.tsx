@@ -32,7 +32,7 @@ export default function CoursePage() {
   return (
     <main className="pb-16">
       {/* Баннер: фон картинки совпадает с цветом курса, верх фигуры обрезается как в макете */}
-      <section className={`relative mb-10 h-48 overflow-hidden rounded-3xl md:mb-14 md:h-70 ${bg}`}>
+      <section className={`relative mb-10 overflow-hidden rounded-3xl md:mb-14 md:h-70 h-72 ${bg}`}>
         <h1 className="absolute left-6 top-6 z-10 text-4xl font-medium text-white md:left-10 md:top-10 md:text-6xl">
           {course.nameRU}
         </h1>
@@ -41,7 +41,7 @@ export default function CoursePage() {
             src={src}
             alt=""
             onError={() => setImgFailed(true)}
-            className="absolute bottom-0 right-0 w-72 max-w-none md:right-12 md:w-110"
+            className="absolute bottom-0 left-1/2 w-72 max-w-none -translate-x-1/2 md:left-auto md:right-12 md:w-110 md:translate-x-0"
           />
         )}
       </section>
@@ -54,10 +54,12 @@ export default function CoursePage() {
             {course.fitting.map((text, i) => (
               <li
                 key={i}
-                className="flex items-center gap-4 rounded-3xl bg-linear-to-br from-[#1c1e26] to-[#111217] p-6 text-white"
+                className="flex items-center gap-4 rounded-3xl bg-linear-to-br from-[#1c1e26] to-[#111217] p-5 md:p-6 text-white"
               >
-                <span className="text-6xl font-medium leading-none text-brand">{i + 1}</span>
-                <span className="text-lg leading-snug">{text}</span>
+                <span className="text-5xl font-medium leading-none text-brand md:text-6xl">
+                  {i + 1}
+                </span>
+                <span className="text-base leading-snug md:text-lg">{text}</span>
               </li>
             ))}
           </ul>
@@ -70,7 +72,7 @@ export default function CoursePage() {
           <h2 className="mb-5 text-2xl font-medium md:mb-6 md:text-3xl">Направления</h2>
           <ul className="grid gap-x-8 gap-y-4 rounded-3xl bg-brand p-6 sm:grid-cols-2 md:px-8 md:py-7 lg:grid-cols-3">
             {course.directions.map((d) => (
-              <li key={d} className="flex items-center gap-3 text-lg">
+              <li key={d} className="flex items-center gap-3 text-base md:text-lg">
                 <StarIcon />
                 {d}
               </li>
@@ -81,7 +83,7 @@ export default function CoursePage() {
 
       {/* Призыв к действию; бегун выходит за верхнюю границу карточки */}
       <section className="relative rounded-3xl bg-white p-6 shadow-[0_4px_67px_-12px_rgba(0,0,0,0.13)] md:p-10">
-        <div className="max-w-md">
+        <div className="max-w-md pt-16 md:pt-0">
           <h2 className="mb-6 text-4xl font-medium leading-tight md:text-5xl">
             Начните путь
             <br />к новому телу
@@ -116,7 +118,7 @@ export default function CoursePage() {
           src="/runner.png"
           alt=""
           onError={(e) => (e.currentTarget.style.display = 'none')}
-          className="pointer-events-none absolute -top-10 bottom-0 right-6 hidden h-[calc(100%+2.5rem)] object-contain object-bottom md:block"
+          className="pointer-events-none absolute -top-12 right-2 md:bottom-0 md:right-6 md:-top-10 h-40 object-contain object-top md:h-[calc(100%+2.5rem)] md:object-bottom"
         />
       </section>
     </main>

@@ -1,6 +1,7 @@
 import { useState, type FormEvent } from 'react';
 import { ApiError } from '../api/client';
 import { useAuth } from '../context/useAuth';
+import { LogoIcon } from './Icons';
 import { validateEmail, validatePassword } from '../lib/validation';
 
 type Mode = 'login' | 'register';
@@ -49,9 +50,12 @@ export default function AuthModal() {
       <form
         onSubmit={onSubmit}
         onClick={(e) => e.stopPropagation()}
-        className="w-[360px] rounded-3xl bg-white p-10 shadow-xl"
+        className="mx-4 w-full max-w-90 rounded-3xl bg-white p-6 shadow-xl sm:p-10"
       >
-        <h2 className="mb-8 text-2xl font-medium">SkyFitnessPro</h2>
+        <h2 className="mb-8 flex items-center justify-center gap-2 text-2xl font-medium sm:text-3xl">
+          <LogoIcon />
+          SkyFitnessPro
+        </h2>
 
         <input
           type="email"
@@ -70,11 +74,7 @@ export default function AuthModal() {
 
         {error && <p className="mb-4 text-center text-sm text-red-500">{error}</p>}
 
-        <button
-          type="submit"
-          disabled={pending}
-          className="btn-primary mb-3 w-full py-3 text-lg"
-        >
+        <button type="submit" disabled={pending} className="btn-primary mb-3 w-full py-3 text-lg">
           Войти
         </button>
         <button

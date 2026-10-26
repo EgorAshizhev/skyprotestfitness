@@ -1,7 +1,6 @@
 import { clearToken, getToken } from '../lib/token';
 import type { ApiErrorBody } from '../types';
 
-// Проверьте хост в документации API; можно переопределить в .env
 const BASE_URL: string =
   import.meta.env.VITE_API_URL ?? 'https://wedev-api.sky.pro/api/fitness';
 
@@ -17,7 +16,6 @@ export class ApiError extends Error {
 
 let onUnauthorized: (() => void) | null = null;
 
-/** AuthContext регистрирует колбэк для выхода при 401 (токен живёт 7 дней). */
 export const setUnauthorizedHandler = (fn: (() => void) | null): void => {
   onUnauthorized = fn;
 };
@@ -25,7 +23,6 @@ export const setUnauthorizedHandler = (fn: (() => void) | null): void => {
 interface RequestOptions {
   method?: 'GET' | 'POST' | 'PATCH' | 'DELETE';
   body?: unknown;
-  /** true для эндпоинтов, помеченных * в документации */
   auth?: boolean;
 }
 
@@ -34,8 +31,6 @@ export async function request<T>(
   { method = 'GET', body, auth = false }: RequestOptions = {},
 ): Promise<T> {
   const headers: Record<string, string> = {};
-  // This API rejects Content-Type: application/json; it expects a JSON string body
-  // without that header, as documented by the supplied backend middleware.
   if (auth) {
     const token = getToken();
     if (token) headers.Authorization = `Bearer ${token}`;

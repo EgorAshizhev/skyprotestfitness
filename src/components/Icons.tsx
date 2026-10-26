@@ -1,4 +1,4 @@
-// Небольшие SVG-иконки из макета. Цвет берётся из currentColor.
+
 
 export const LogoIcon = () => (
   <svg width="30" height="26" viewBox="0 0 30 26" fill="none" aria-hidden="true">

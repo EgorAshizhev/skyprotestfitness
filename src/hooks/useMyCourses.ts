@@ -17,7 +17,6 @@ interface State {
   error: string | null;
 }
 
-/** Купленные курсы пользователя вместе с процентом прогресса. */
 export function useMyCourses() {
   const { user } = useAuth();
   const [state, setState] = useState<State>({ loaded: false, items: [], error: null });
@@ -33,7 +32,6 @@ export function useMyCourses() {
     Promise.all(
       list.map(async (id): Promise<MyCourse> => {
         const course = await getCourse(id);
-        // прогресс не критичен: если не загрузился, показываем 0%
         const progress = await getCourseProgress(id).catch(() => null);
         return {
           course,
@@ -61,8 +59,6 @@ export function useMyCourses() {
   }, [idsKey, version]);
 
   const refresh = useCallback(() => setVersion((v) => v + 1), []);
-
-  // удалённый курс пропадает сразу, не дожидаясь перезагрузки
   const items = state.items.filter((i) => ids.includes(i.course._id));
   const isLoading = !state.loaded && ids.length > 0;
 

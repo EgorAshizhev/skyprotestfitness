@@ -9,11 +9,6 @@ interface State {
   error: string | null;
 }
 
-/**
- * Список курсов. В ответе GET /courses нет длительности и сложности,
- * поэтому дополнительно подгружаем детали каждого курса (GET /courses/:id).
- * Если детали не загрузились, показываем то, что пришло в списке.
- */
 export function useCourses(): State {
   const [state, setState] = useState<State>({ courses: [], isLoading: true, error: null });
 

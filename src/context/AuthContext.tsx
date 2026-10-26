@@ -16,7 +16,6 @@ export function AuthProvider({ children }: { children: ReactNode }) {
   }, []);
 
  const refreshUser = useCallback(async () => {
-  // Теперь authApi.getMe() возвращает чистый объект User
   setUser(await authApi.getMe());
 }, []);
 
@@ -38,13 +37,11 @@ export function AuthProvider({ children }: { children: ReactNode }) {
     [login]
   );
 
-  // 401 в любом защищённом запросе -> выходим
   useEffect(() => {
     setUnauthorizedHandler(() => setUser(null));
     return () => setUnauthorizedHandler(null);
   }, []);
 
-  // восстановление сессии по сохранённому токену
   useEffect(() => {
     if (!getToken()) return;
     let cancelled = false;

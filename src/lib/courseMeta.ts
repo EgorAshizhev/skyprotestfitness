@@ -1,9 +1,7 @@
-// API не отдаёт картинки и цвета карточек, поэтому сопоставляем по nameEN.
-// Картинки лежат в public/ и доступны по адресу /<файл>.
 
 interface CourseMeta {
-  image: string; // имя файла в public/
-  bg: string; // цвет фона карточки, пока грузится картинка
+  image: string;
+  bg: string;
 }
 
 const META: Array<{ match: string; meta: CourseMeta }> = [

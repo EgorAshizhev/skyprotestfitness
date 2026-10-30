@@ -82,8 +82,8 @@ export default function CoursePage() {
       )}
 
       {/* Призыв к действию; бегун выходит за верхнюю границу карточки */}
-      <section className="relative rounded-3xl bg-white p-6 shadow-[0_4px_67px_-12px_rgba(0,0,0,0.13)] md:p-10">
-        <div className="max-w-md pt-16 md:pt-0">
+      <section className="relative mt-36 rounded-3xl bg-white p-6 shadow-[0_4px_67px_-12px_rgba(0,0,0,0.13)] md:mt-0 md:p-10">
+        <div className="max-w-md">
           <h2 className="mb-6 text-4xl font-medium leading-tight md:text-5xl">
             Начните путь
             <br />к новому телу
@@ -118,7 +118,7 @@ export default function CoursePage() {
           src="/runner.png"
           alt=""
           onError={(e) => (e.currentTarget.style.display = 'none')}
-          className="pointer-events-none absolute -top-12 right-2 md:bottom-0 md:right-6 md:-top-10 h-40 object-contain object-top md:h-[calc(100%+2.5rem)] md:object-bottom"
+          className="pointer-events-none absolute bottom-full right-2 h-64 w-auto max-w-none object-contain object-bottom md:bottom-0 md:right-6 md:-top-10 md:h-[calc(100%+2.5rem)]"
         />
       </section>
     </main>
